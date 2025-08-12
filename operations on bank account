@@ -1,0 +1,86 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class bank_acc
+{
+private:
+	string name,acc_type; //name,account type
+	int acc_no,acc_balance; // acc number, balance
+public:
+	bank_acc( string a, string b , int c, int d)
+	{
+	      name=a;
+	      acc_type=b;
+	      acc_no=c;
+	      acc_balance=d;
+	}
+	void display();
+	void withdraw();
+	void deposit();
+};
+
+
+void bank_acc::display()
+{
+cout<<"----------ACCOUNT DETAILS-----------"<<endl;
+cout<<"Your name is "<<name<<"."<<endl;
+cout<<"Your account type is "<<acc_type<<"."<<endl;
+cout<<"Your account number is "<<acc_no<<"."<<endl;
+cout<<"Your account balance is "<<acc_balance<<"."<<endl;
+}
+void bank_acc::withdraw()
+{
+    int wd; //withdraw
+    cout<<"Enter the amount you want to withdraw: "<<endl;
+    cin>>wd;
+    acc_balance=acc_balance-wd;
+}
+void bank_acc::deposit()
+{
+    int dp; //deposit
+    cout<<"Enter the amount you want to deposit: "<<endl;
+    cin>>dp;
+    acc_balance=acc_balance+dp;
+}
+int main(){
+	string name,acc_type;
+	int acc_no,acc_balance;
+	cout<<"Enter your name: "<<endl;
+	cin>>name;
+
+	cout<<"Enter your account type: "<<endl;
+	cin>>acc_type;
+
+           cout<<"Enter your account number: "	<<endl;
+           cin>>acc_no;
+
+           cout<<"Enter your account balance: "<<endl;
+           cin>>acc_balance;
+    bank_acc obj(name,acc_type,acc_no,acc_balance);
+    obj.display();
+	int p;
+	char q;
+	do
+	{
+	    cout<<"1.Display 2.Withdraw 3.Deposit "<<endl;
+	    cin>>p;
+	    switch(p)
+	    {
+	        case 1:
+	        obj.display();
+	        break;
+
+	        case 2:
+	        obj.withdraw();
+	        break;
+
+	        case 3:
+	        obj.deposit();
+	        break;
+	    }
+	    cout<<"Do you want to continue(y/n)"<<endl;
+	    cin>>q;
+	}
+	while(q=='y' || q=='Y');
+	return 0;
+}
