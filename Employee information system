@@ -1,0 +1,98 @@
+#include<iostream>
+using namespace std;
+
+class employee {
+    string name;
+    int emp_id;
+    string department;
+    string date;
+    int contact;
+
+    static int count; 
+
+public:
+    // Parameterized constructor
+    employee(string a, string b, string c, int d, int e) {
+        cout << "Parameterized constructor\n";
+        name = a;
+        department = b;
+        date = c;
+        emp_id = d;
+        contact = e;
+        count++;
+    }
+
+    // Default constructor
+    employee() {
+        cout << "Default constructor\n";
+        name = "NA";
+        department = "NA";
+        date = "NA";
+        emp_id = 0;
+        contact = 0;
+        count++;
+    }
+
+    // Copy constructor
+    employee(const employee &obj2) {
+        cout << "Copy constructor\n";
+        name = obj2.name;
+        department = obj2.department;
+        date = obj2.date;
+        emp_id = obj2.emp_id;
+        contact = obj2.contact;
+        count++;
+    }
+    void display();
+    void accept();
+    ~employee()
+    {
+        cout<<"Objects destructed: "<<count<<endl;
+        count--;
+    }
+    static void showcount() {
+        cout << "objects created: " << count << endl;
+    }
+};
+
+
+int employee::count = 0;
+
+void employee::display() {
+    cout << "\n-----EMPLOYEE INFORMATION-----\n";
+    cout << "Name: " << name << "\n";
+    cout << "Employee ID: " << emp_id << "\n";
+    cout << "Department: " << department << "\n";
+    cout << "Working since: " << date << "\n";
+    cout << "Phone number: " << contact << "\n";
+    cout << "--------------------------------\n";
+    showcount();
+}
+
+void employee::accept() {
+    cout << "Enter your name: \n";
+    cin>>name;
+    cout << "Provide the employee ID: \n";
+    cin >> emp_id;
+    cout << "The department you belong to: \n";
+   cin>>department;
+    cout << "Date of joining: \n";
+    cin>>date;
+    cout << "Provide your contact:\n ";
+    cin >> contact;
+}
+
+int main() {
+    employee obj, obj2;
+    cout << "-----WELCOME TO THE INSTITUTION-----\n";
+    obj.display();
+    cout << "\nProvide new employee details:\n";
+    obj.accept();
+    obj.display();
+    employee obj3(obj);
+    obj3.display();
+    employee *ptr=new employee("tanishka","comp","28/08/2006",123,123456789);
+    ptr-> display();
+    delete ptr;
+    return 0;
+}
