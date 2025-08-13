@@ -1,0 +1,134 @@
+#include<iostream>
+using namespace std;
+//base class
+class staff {
+protected :
+	string name;
+	string dept;
+	int id;
+public :
+	void accept1();
+	void display1();
+};
+//derived class 1
+class teacher:public staff {
+private :
+	string subject;
+	int exp;
+public :
+	void accept2();
+	void display2();
+};
+//derived class 2
+class support:public staff {
+    private :
+   string area;
+   public :
+   void accept3();
+   void display3();
+};
+void staff ::accept1()
+{
+	cout<<"---Provide your information---"<<endl;
+cout<<"Enter Your Name :";
+cin>>name;
+cout<<"\nEnter the department :";
+cin>>dept;
+cout<<"\nProvide your ID :";
+cin>>id;
+}
+void staff ::display1(){
+	cout<<"\n-----Staff Information-----\n";
+	cout<<"Name : "<<name<<endl;
+	cout<<"Department : "<<dept<<endl;
+	cout<<"ID : "<<id<<endl;
+}
+void teacher ::accept2(){
+    accept1();
+	cout<<"Enter the subject : ";
+	cin>>subject;
+	cout<<"\nEnter your Experience :";
+	cin>>exp;
+}
+void teacher ::display2(){
+    display1();
+	cout<<"Subject : "<<subject<<endl;
+	cout<<"Experience :"<<exp<<"years"<<endl;
+	cout<<"\n-------------------------------------------------------------------\n";
+}
+void support ::accept3(){
+    cout<<"--Information for support staff--"<<endl;
+    accept1();
+    cout<<"Enter the area of support: ";
+    cin>>area;
+}
+void support ::display3(){
+    display1();
+    cout<<"Area of support : "<<area<<endl;
+cout<<"\n-------------------------------------------------------------------\n";
+}
+int main ()
+{
+	int t=0,n=0;
+	int choice,i;
+	char a;
+	do {
+    cout<<"-----WELCOME TO THE INSTITUTION-----\n";
+    cout<<"\nChoose the type of information :\n1.Teaching staff information\n2.Support staff information\n3.Exit\n";
+    cout<<"\nEnter your choice :";
+    cin>>choice;
+    
+    switch(choice){
+        case 1:{
+			
+        cout<<"Enter the number of teachers: ";
+    cin>>t;
+    teacher obj1[t];
+        for (i=0;i<t;i++)
+        {
+        obj1[i].accept2();
+	}
+	
+	for(i=0;i<t;i++)
+	{
+		cout<<"\nTeacher "<<(i+1)<<endl;
+		obj1[i].display2();
+	}
+	break;
+}
+        case 2:{
+        cout<<"\nEnter the number of staff members: ";
+	cin>>n;
+	support obj2[n];
+        for (i=0;i<n;i++){
+        obj2[i].accept3();
+	}
+	
+	for(i=0;i<n;i++)
+	{
+		cout<<"\nSupport staff "<<(i+1)<<endl;
+		obj2[i].display3();
+	
+	}
+	break;
+}
+        case 3:{
+        cout<<"---THANKYOU FOR VISITING---\n";
+        break;
+	}
+        default :
+   cout<<" Invalid choice\n";
+
+    }
+    cout<<"Do you want to continue (Y/N):\n";
+   cin>>a;
+   if (a=='N')
+   {
+	   break;
+   }
+    } 
+   while (a=='Y' || a=='y');
+   
+    
+	return 0;
+}
