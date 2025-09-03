@@ -1,0 +1,68 @@
+#include<iostream>
+using namespace std;
+class complex {
+public :
+	float x,y;
+	void display();
+	complex operator +(complex);
+	complex operator *(complex);
+	
+friend istream& operator>>(istream&, complex&);
+    friend ostream& operator<<(ostream&, complex&);
+};
+
+void complex :: display()
+{
+	cout<<"Complex Number:"<<x<<"+"<<"j"<<y<<endl;
+
+}
+complex complex :: operator +(complex c)
+{
+	complex temp;
+	temp.x =x+c.x;
+	temp.y=y+c.y;
+	return(temp);
+}
+complex complex :: operator *(complex c)
+{ 
+	complex temp;
+  temp.x = x * c.x - y * c.y;
+    temp.y = x * c.y + y * c.y;
+    return temp;
+	return temp;
+}
+istream& operator>>(istream& in, complex &obj) {
+    cout << "Enter the real part: ";
+    in >> obj.x;
+    cout << "Enter the imaginary part: ";
+    in >> obj.y;
+    return in;
+}
+ostream& operator<<(ostream& out, complex &obj) {
+    out << obj.x << " + " << obj.y << "j";
+    return out;
+}
+int main()
+{
+	complex c1,c2,c3,c4;
+	/*obj.display();
+	c1=complex(2,3);
+	c2=complex(2,3);
+	c3=c1+c2;
+	c1.display();
+	c2.display();
+	c3.display();*/
+
+    cout << "Enter the information below:" << endl;
+    cin >> c1;
+    cin >> c2;
+
+    c3 = c1 + c2;
+    cout << "Result of addition: " << c3 << endl;
+    c4= c1 * c2;
+    cout<<"Result of Multiplication: "<< c4 <<endl;
+
+	return 0;
+
+}
+
