@@ -1,0 +1,42 @@
+#include<iostream>
+using namespace std;
+class shape {
+    protected :
+    float x,y;
+    public:
+    void accept();
+    virtual void display_area()=0;
+};
+class triangle :public shape {
+    void display_area()
+    {
+        float area=0.5*x*y;
+        cout<<"\nArea of triangle :"<<area<<endl;
+    }
+};
+class rectangle :public shape {
+    void display_area()
+    {
+        float area=x*y;
+        cout<<"\nArea of rectangle :"<<area<<endl;
+    }
+};
+void shape::accept(){
+    cout<<"\nEnter lenght=";
+    cin>>x;
+    cout<<"\nEnter breadth=";
+    cin>>y;
+}
+int main()
+{
+    shape*ptr;
+    triangle t;
+    ptr=&t;
+    ptr->accept();
+    ptr->display_area();
+    rectangle r;
+    ptr=&r;
+    ptr->accept();
+    ptr->display_area();
+    
+}
