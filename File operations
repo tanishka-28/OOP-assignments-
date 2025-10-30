@@ -1,0 +1,40 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+
+class inventory {
+public:
+    int item_id;
+    string item_name;
+
+
+    void accept() {
+        cout << "Enter the item name: ";
+        cin >> item_name;
+        cout << "Enter item id: ";
+        cin >> item_id;
+    }
+
+
+    void display(ofstream &file) {  
+        file << "Product name : " << item_name << endl;
+        file << "Product id   : " << item_id << endl;
+        file << "---------------------------" << endl;
+    }
+};
+
+
+int main() {
+    ofstream file("inventory.txt");  
+
+
+    inventory obj;
+    obj.accept();
+    obj.display(file);
+
+
+    file.close();
+    cout << "\nData written to file successfully!\n";
+    return 0;
+}
