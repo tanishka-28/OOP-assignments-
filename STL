@@ -1,0 +1,31 @@
+#include <iostream>
+#include <map>
+#include <string>
+using namespace std;
+
+int main() {
+    map<int, string> students;
+    int n, prn;
+    string name;
+
+    cout << "Enter number of students: ";
+    cin >> n;
+
+    for (int i = 0; i < n; i++) {
+        cout << "\nEnter PRN: ";
+        cin >> prn;
+        cout << "Enter Name: ";
+        cin >> name;
+        students[prn] = name;
+    }
+
+    cout << "\nEnter PRN to search: ";
+    cin >> prn;
+
+    if (students.find(prn) != students.end())
+        cout << "Name: " << students[prn] << endl;
+    else
+        cout << "PRN not found!" << endl;
+
+    return 0;
+}
